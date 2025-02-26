@@ -41,7 +41,7 @@ def plot_state(state):
         cmap = plt.cm.viridis
         cmap.set_under(color='red')  # Mark active agents with a distinct color
         
-        plt.imshow(grid.T, origin='lower', cmap=cmap, interpolation='nearest', vmin=0.1)
+        plt.imshow(grid.T, origin='lower', cmap=cmap, interpolation='nearest', vmin=0)
         plt.colorbar(label='Sugar Level')
         plt.title("Agent Sugar Level and Active Agents")
         plt.xlabel("X Coordinate")
@@ -88,9 +88,9 @@ def animate_states(state_count):
     
                 #grid[x, y] = sugar_level
 
-            im = ax.imshow(grid.T, animated=True, cmap=cmap, interpolation='nearest', vmin=0.1)
+            im = ax.imshow(grid.T, animated=True, cmap=cmap, interpolation='nearest', vmin=0.0)
             if i == 0:
-                ax.imshow(grid.T, animated=True, cmap=cmap, interpolation='nearest', vmin=0.1)  # show an initial one first
+                ax.imshow(grid.T, animated=True, cmap=cmap, interpolation='nearest', vmin=0.0)  # show an initial one first
             ims.append([im])
 
 
