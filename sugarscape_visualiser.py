@@ -155,7 +155,7 @@ def display_states(state_count):
         im = ax.imshow(grid[:,:,0], cmap=cmap, interpolation='nearest', vmin=0.0)
 
         ax_depth = plt.axes([0.23, 0.02, 0.56, 0.04])
-        slider = Slider(ax_depth, 'iteration', 0, grid.shape[2], valinit=idx)
+        slider = Slider(ax_depth, 'iteration', 0, grid.shape[2], valinit=0)
 
         update_slider = lambda v: im.set_data(grid[:, :, int(round(v))])
         slider.on_changed(update_slider)
