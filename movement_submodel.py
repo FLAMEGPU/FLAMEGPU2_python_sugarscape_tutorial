@@ -230,7 +230,9 @@ class MovementExitCondition(pyflamegpu.HostCondition):
         if (self.iterations < 9) :
             # Agent movements still unresolved
             if FLAMEGPU.agent("agent").countInt("status", sugarscape_common.AGENT_STATUS_MOVEMENT_UNRESOLVED) :
-                return pyflamegpu.CONTINUE    
+                return pyflamegpu.CONTINUE   
+            # Helpful debug statement to see how many iterations are required to resolve the conflicts
+            # print(f"Conflict resolved by iteration {self.iterations}")
         self.iterations = 0
         return pyflamegpu.EXIT
 
