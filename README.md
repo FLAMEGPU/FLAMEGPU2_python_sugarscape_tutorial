@@ -41,6 +41,7 @@ To run this tutorial locally you will require:
   + Including [`NVRTC`](https://docs.nvidia.com/cuda/nvrtc/index.html)
   + If you wish to run this tutorial on an `ppc64le` or `arm64-sbsa` based-system, you will need to build `pyflamegpu` from source.
   Please see the main [FLAMEGPU/FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2) repository for instructions on building from source.
++ NodeJS installed to support interactive plotting
 
 1. Clone the repository if you have not already done so
 
