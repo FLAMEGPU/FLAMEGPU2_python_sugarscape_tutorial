@@ -25,7 +25,7 @@ If you wish to follow this tutorial at your own pace, you can run this tutorial 
 
 ### Google Colab
 
-Google colab is currently unsupported as it is unable to display compilation errors from runtime compile agent functions. See [https://github.com/FLAMEGPU/FLAMEGPU2-tutorial-python/issues/10](https://github.com/FLAMEGPU/FLAMEGPU2-tutorial-python/issues/10)
+Google colab has patched support using an externally hosted experimenal pyflamegpu wheel built from [#5d777e0](https://github.com/FLAMEGPU/FLAMEGPU2/commit/5d777e0a28c32d0b37da309d18ec9e3afdec8150). Some additional steps are required for Colab which are described in the workbook.
 
 ### Running this Tutorial Locally
 
