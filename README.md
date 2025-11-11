@@ -75,4 +75,4 @@ To run this tutorial locally you will require:
 
 ### Ipympl backend
 
-Colab also has a known [bug](https://github.com/googlecolab/colabtools/issues/5425) with `ipympl` which is used for interactive plotting of the results. Despite being Support for `ipympl` is planned in a future release. For now a work-around is included which requires restarting the kernel.
+Colab also has a known [bug](https://github.com/googlecolab/colabtools/issues/5425) with `ipympl` which is used for interactive plotting of the results. Support for `ipympl` is planned in a future release. For now a work-around is included which requires restarting the kernel.
