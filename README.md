@@ -25,7 +25,9 @@ If you wish to follow this tutorial at your own pace, you can run this tutorial 
 
 ### Google Colab
 
-Google colab has patched support using an externally hosted experimenal pyflamegpu wheel built from [#5d777e0](https://github.com/FLAMEGPU/FLAMEGPU2/commit/5d777e0a28c32d0b37da309d18ec9e3afdec8150). Some additional steps are required for Colab which are described in the workbook.
+You can launch the notebook in Colab using the link below. Some additional steps are required within the notebook which are described.
+
+ - [Launch Colab Notebook](https://colab.research.google.com/github/FLAMEGPU/FLAMEGPU2_python_sugarscape_tutorial/blob/main/FLAMEGPU-Tutorial.ipynb)
 
 ### Running this Tutorial Locally
 
@@ -33,9 +35,9 @@ Google colab has patched support using an externally hosted experimenal pyflameg
 
 To run this tutorial locally you will require:
 
-+ Python `>= 3.6`
-+ CUDA `>= 11.0` and a [Compute Capability](https://developer.nvidia.com/cuda-gpus) >= 3.5 NVIDIA GPU
-+ Linux with `glibc >= 2.17`
++ Python `>= 3.10`
++ CUDA `>= 12.0` and a [Compute Capability](https://developer.nvidia.com/cuda-gpus) >= 5.0 NVIDIA GPU
++ Linux with `glibc >= 2.28`
   + Windows support/instructions will be introduced at a later date
 + An `x86_64` CPU
   + Including [`NVRTC`](https://docs.nvidia.com/cuda/nvrtc/index.html)
@@ -71,12 +73,6 @@ To run this tutorial locally you will require:
 
 ## Known Issues
 
-### Missing Jitify Compilation Error Messages
+### Ipympl backend
 
-Run time compilation of agent functions may fail if there are errors in the agent functions.
-
-These errors are output to `stdout` by [Jitify](https://github.com/nvidia/jitify), a c++ library used to simplify run time compilation via NVRTC.
-
-Older (and some newer) versions of `ipykernel` (`< 6.0.0a5`) do not capture `stdout` or `stderr` from python cells correctly, meaning that the error messages explaining compilation errors are not visible within the notebook.
-
-Alternatively the errors will be visible in the shell the ipython/jupyter server was launched from, if this is available to you.
+Colab also has a known [bug](https://github.com/googlecolab/colabtools/issues/5425) with `ipympl` which is used for interactive plotting of the results. Despite being Support for `ipympl` is planned in a future release. For now a work-around is included which requires restarting the kernel.
