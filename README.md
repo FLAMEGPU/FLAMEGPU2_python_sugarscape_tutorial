@@ -31,7 +31,7 @@ You can launch the notebook in Colab using the link below. Some additional steps
 
 ### Running this Tutorial Locally
 
-> **Note**: The notebook currently assumes you are using python 3.6, with CUDA 11.0 on a Linux x86_64 machine. This will be corrected in the future.
+> **Note**: The notebook currently assumes you are using python 3.10-3.14, with CUDA 12.0-12.9 on a Linux x86_64 machine.
 
 To run this tutorial locally you will require:
 
