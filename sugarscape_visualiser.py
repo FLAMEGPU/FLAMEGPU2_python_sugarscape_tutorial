@@ -9,6 +9,12 @@ DATA_DIR = "data"
 grid = np.array([])
 loaded_steps = 0
 
+def unpack(v):
+    # Function is required to convert agent variable states from array to scalars due to bug in RC3
+    # I.e. [123] to 123
+    return v[0] if isinstance(v, list) else v
+
+
 def load_data(state_count):
     global grid
     global loaded_steps
@@ -25,16 +31,16 @@ def load_data(state_count):
                 return
             
             # Determine grid size
-            max_x = max(agent.get('x', 0) for agent in agents)
-            max_y = max(agent.get('y', 0) for agent in agents)
+            max_x = unpack(max(agent.get('x', 0) for agent in agents))
+            max_y = unpack(max(agent.get('y', 0) for agent in agents))
 
             if not grid.any():
                 grid = np.zeros((max_x + 1, max_y + 1, state_count+1))
                 
             for agent in agents:
-                x, y = agent.get('x', 0), agent.get('y', 0)
-                env_sugar_level = agent.get('env_sugar_level', 0)
-                agent_id = agent.get('agent_id', -1)
+                x, y = unpack(agent.get('x', 0)), unpack(agent.get('y', 0))
+                env_sugar_level = unpack(agent.get('env_sugar_level', 0))
+                agent_id = unpack(agent.get('agent_id', -1))
                 
                 if agent_id != -1:
                     grid[x, y, i] = -1  # Mark active agents with -1
