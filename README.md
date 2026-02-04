@@ -59,7 +59,7 @@ To run this tutorial locally you will require:
 
     ```bash
     # I.e. if using a venv and pip
-    python3 -m pip install -U jupyterlab matplotlib ipympl notebook
+    python3 -m pip install -Ur requirements.txt
     ```
 
 4. Launch `jupyter lab` or the legacy `jupyter notebook` interface and open `FLAME_GPU_2_python_tutorial.ipynb`
@@ -69,6 +69,15 @@ To run this tutorial locally you will require:
     jupyter lab FLAMEGPU-tutorial.ipynb
     # Using jupyter notebook
     jupyter notebook FLAMEGPU-tutorial.ipynb
+    ```
+
+    If you are running this on a remote machine (via `ssh`) you may wish to use local forwarding, for example using port `8080`:
+
+    ```bash
+    # Open an ssh tunnel with local forwarding of port 8080
+    ssh -L 8080:localhost:8080 user@remote
+    # Open the notebook without a browser and specify the port
+    jupyter lab --no-browser --port 8080 FLAMEGPU-tutorial.ipynb
     ```
 
 ## Known Issues
