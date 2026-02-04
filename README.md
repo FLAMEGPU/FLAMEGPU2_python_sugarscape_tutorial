@@ -59,7 +59,7 @@ To run this tutorial locally you will require:
 
     ```bash
     # I.e. if using a venv and pip
-    python3 -m pip install -U jupyterlab matplotlib ipympl notebook
+    python3 -m pip install -Ur requirements.txt
     ```
 
 4. Launch `jupyter lab` or the legacy `jupyter notebook` interface and open `FLAME_GPU_2_python_tutorial.ipynb`
