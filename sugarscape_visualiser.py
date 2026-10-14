@@ -10,16 +10,16 @@ grid = np.array([])
 loaded_steps = 0
 
 def unpack(v):
-    # Function is required to convert agent variable states from array to scalars due to bug in RC3
+    # Function is required to convert agent variable steps from array to scalars due to bug in RC3
     # I.e. [123] to 123
     return v[0] if isinstance(v, list) else v
 
 
-def load_data(state_count):
+def load_data(step_count):
     global grid
     global loaded_steps
     try:
-        for i in range(state_count+1):
+        for i in range(step_count+1):
             file_path = f"{DATA_DIR}/{i}.json"
             with open(file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
@@ -35,7 +35,7 @@ def load_data(state_count):
             max_y = unpack(max(agent.get('y', 0) for agent in agents))
 
             if not grid.any():
-                grid = np.zeros((max_x + 1, max_y + 1, state_count+1))
+                grid = np.zeros((max_x + 1, max_y + 1, step_count+1))
                 
             for agent in agents:
                 x, y = unpack(agent.get('x', 0)), unpack(agent.get('y', 0))
@@ -46,46 +46,46 @@ def load_data(state_count):
                     grid[x, y, i] = -1  # Mark active agents with -1
                 else:
                     grid[x, y, i] = env_sugar_level
-        loaded_steps = state_count
+        loaded_steps = step_count
     except Exception as e:
         print(f"Error reading JSON file: {e}")
         print(traceback.format_exc())
 
 
-def plot_state(state):
+def plot_step(step):
     """Reads a JSON file and plots sugar levels and active agents."""
 
     # if grid is empty force reload of data
-    if not grid.any() or loaded_steps < state:
-        load_data(state)
+    if not grid.any() or loaded_steps < step:
+        load_data(step)
         
     # Plotting
     plt.figure(figsize=(8, 6))
     cmap = plt.cm.viridis
     cmap.set_under(color='red')  # Mark active agents with a distinct color
     
-    im = plt.imshow(grid[:,:,state], origin='lower', cmap=cmap, interpolation='nearest', vmin=0)
+    im = plt.imshow(grid[:,:,step], origin='lower', cmap=cmap, interpolation='nearest', vmin=0)
 
     #plot
-    plt.title(f"Agent Sugar Level and Active Agents Step {state}")
+    plt.title(f"Agent Sugar Level and Active Agents Step {step}")
     plt.colorbar(im)
     plt.show()
 
 
-def animate_states(state_count):
+def animate_steps(step_count):
     """Reads a JSON file and plots sugar levels and active agents."""
     global ani
 
     # if grid is empty force reload of data
     if not grid.any():
-        load_data(state_count)
+        load_data(step_count)
         
     fig, ax = plt.subplots()
     cmap = plt.cm.viridis
     cmap.set_under(color='red')  # Mark active agents with a distinct color
     
     ims = [] # ims is a list of lists, each row is a list of artists to draw in the
-    for i in range(state_count):
+    for i in range(step_count):
         im = ax.imshow(grid[:,:,i], animated=True, cmap=cmap, interpolation='nearest', vmin=0.0)
         if i == 0:
             ax.imshow(grid[:,:,i], animated=True, cmap=cmap, interpolation='nearest', vmin=0.0)  # show an initial one first
@@ -99,7 +99,7 @@ def animate_states(state_count):
 
 
 
-def display_states(state_count):
+def display_steps(step_count):
     """Reads a JSON file and plots sugar levels and active agents."""
     global im
     global slider
@@ -107,7 +107,7 @@ def display_states(state_count):
 
     # if grid is empty force reload of data
     if not grid.any():
-        load_data(state_count)
+        load_data(step_count)
     
     fig, ax = plt.subplots()
     cmap = plt.cm.viridis
