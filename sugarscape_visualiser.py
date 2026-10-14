@@ -16,6 +16,7 @@ def unpack(v):
 
 
 def load_data(step_count):
+    """Function loads FLAME GPU sugarscape simulation output data (in json format) and stores it in the global grid array"""
     global grid
     global loaded_steps
     try:
@@ -53,7 +54,10 @@ def load_data(step_count):
 
 
 def plot_step(step):
-    """Reads a JSON file and plots sugar levels and active agents."""
+    """
+    Plots a single agent step as a matplotlib plot.
+    If the data is not loaded then it will be loaded first.
+    """
 
     # if grid is empty force reload of data
     if not grid.any() or loaded_steps < step:
@@ -73,7 +77,10 @@ def plot_step(step):
 
 
 def animate_steps(step_count):
-    """Reads a JSON file and plots sugar levels and active agents."""
+    """
+    Plots the simulation outputs as a looping animation.
+    If the data is not loaded then it will be loaded first.
+    """
     global ani
 
     # if grid is empty force reload of data
@@ -100,7 +107,10 @@ def animate_steps(step_count):
 
 
 def display_steps(step_count):
-    """Reads a JSON file and plots sugar levels and active agents."""
+    """
+    Plots the simulation outputs as an interactive plot with a slider controlling the step number.
+    If the data is not loaded then it will be loaded first.
+    """
     global im
     global slider
     im = slider = None
